@@ -1,6 +1,7 @@
 Write your reflection here.
 
-See reflection.md for what makes a good reflection — be specific, use the
-terminology from this assignment (package, module, ETL, coercion, public API,
-relative import, accumulator, group by, unit vs. integration test), and make it
-actionable.
+I learned that building a package with relative imports (using from .transform import) keeps code organized and prevents duplication. By structuring the work as an ETL pipeline (Extract, Transform, Load), I wrote the data cleaning logic once instead of three times. Defining a clear public API in __init__.py forced me to decide what functions reports should use versus what stays internal, which made the code clearer and the dependencies obvious.
+
+The difference between unit tests and integration tests became practical: unit tests caught bugs in individual functions with clean sample data, while integration tests caught when functions didn't work together on messy generated data. When a unit test passed but integration failed, I knew the problem was upstream, not in that function.
+
+I need to improve at writing the public API before coding, not after. I also want to get better at using relative imports correctly on the first try instead of debugging import errors. Testing after each function would have caught problems earlier than waiting until the end. Next time I'll sketch the module structure and public API first, then build functions one at a time with tests running throughout.
